@@ -4,8 +4,11 @@ Nagios Module for GlusterFS (v3.3)
 
 Usage
 -----
-    nagios@monitor:~/> ./check_nrpe -H 10.4.20.69 -c check_glusterfs
+    nagios@monitor:~/> /usr/lib64/nagios/plugins/check_nrpe -H 10.0.0.100 -c check_glusterfs
     GLUSTER OK - Volume data is Stable
+
+    nagios@monitor:~/> /usr/lib64/nagios/plugins/check_nrpe -H 10.0.0.101 -c check_glusterfs
+    GLUSTERFS CRITICAL - Brick count is 3, should be 4
 
 nrpe.cfg
 --------
@@ -20,7 +23,6 @@ nrpe.cfg
 command.cfg
 -----------
     define command {
-
         command_name    check_nrpe
         command_line    $USER1$/check_nrpe -H $HOSTADDRESS$ -c $ARG1
     }
@@ -28,7 +30,6 @@ command.cfg
 nagios_service.cfg
 ------------------
     define service {
-
         check_command                  check_nrpe!check_glusterfs
         host_name                      gluster01.example.com
         notification_period            24x7
@@ -37,6 +38,6 @@ nagios_service.cfg
         service_description            storage_check_glusterfs
     }
 
-Original From
--------------
+Credits
+-------
 http://www.johnbertrand.com/code/check_gluster_pl.html
