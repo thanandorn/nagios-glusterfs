@@ -37,8 +37,8 @@ my $returnMessage="~";
 my $result=`$SUDO $GLUSTER volume info $volume`;
 
 if ($result =~ m/Status: Started/) {
-  if ($result =~ m/Number of Bricks:.*= (\d+)/) {
-    my $bricks=$1;
+  if ($result =~ m/Number of Bricks: (\d+)\sx\s(\d+)\s\=\s(\d+)/){
+    my $bricks=$3;
     if ($bricks != $bricktarget){
 		  $returnCode=CRITICAL;
 		  $returnMessage="Brick count is $bricks, should be $bricktarget";
