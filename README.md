@@ -2,6 +2,8 @@ nagios-glusterfs
 ================
 Nagios Module for GlusterFS (v3.3)
 
+*This plugin has been archived and no further development will be done.*
+
 Usage
 -----
     nagios@monitor:~/> /usr/lib64/nagios/plugins/check_nrpe -H 10.0.0.100 -c check_glusterfs
